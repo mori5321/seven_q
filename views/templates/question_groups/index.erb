@@ -1,0 +1,18 @@
+<head>
+  <link rel="stylesheet" href="/css/questions.css">
+</head>
+
+<div id="question-groups" class="bg-main">
+  <div class="title">
+    <h1>7♧</h1>
+  </div>
+
+
+  <% @question_groups.each do |question_group| %>
+    <a href="question_groups/<%= question_group.id %>">
+      <div class="question-group bg-base txt-sub">
+        <%= question_group.title %>
+      </div>
+    </a>
+  <% end %>
+</div>

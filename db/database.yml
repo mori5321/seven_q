@@ -1,0 +1,6 @@
+development:
+  adapter:  mysql2
+  database: seven_q_development
+  host:     localhost
+  username: root
+  encoding: utf8
