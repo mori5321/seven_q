@@ -7,9 +7,10 @@ require 'haml'
 require 'active_record'
 require 'mysql2'
 require 'sinatra_more/markup_plugin'
+require 'pry'
 
 ActiveRecord::Base.configurations = YAML.load_file('config/database.yml')
-ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations["development"])
+ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[ENV['RACK_ENV']])
 
 require './models/question'
 require './models/question_group'
