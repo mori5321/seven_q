@@ -10,11 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_17_135702) do
+ActiveRecord::Schema.define(version: 2018_05_20_144145) do
+
+  create_table "answer_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "question_room_id"
+    t.index ["question_room_id"], name: "index_answer_groups_on_question_room_id"
+  end
+
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text"
+    t.bigint "answer_group_id"
+    t.bigint "question_id"
+    t.index ["answer_group_id"], name: "index_answers_on_answer_group_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "question_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "subtitle"
+  end
+
+  create_table "question_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "unique_id"
+    t.bigint "question_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_group_id"], name: "index_question_rooms_on_question_group_id"
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
