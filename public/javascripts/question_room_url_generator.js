@@ -16,7 +16,8 @@ class QuestionRoomUrlGenerator {
       {}
     ).then((res) => {
       console.log(res)
-      _this.target.innerText = res.data.url
+      _this.target.innerHTML = `<h6>${res.data.url}</h6>`
+      document.getElementById('copyButton').classList.remove('disabled')
       return res
     }).catch((err) => {
       console.log(err)

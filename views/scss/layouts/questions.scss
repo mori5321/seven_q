@@ -83,6 +83,43 @@
     margin: 0 auto ;
     z-index: 9999;
   }
+
+  #modal {
+    h5 {
+      padding: 20px;
+    }
+
+    #url {
+      overflow: scroll;
+      padding: 0 5px 10px;
+    }
+
+    .send-button-group {
+      position: absolute;
+      bottom: 35px;
+      right: 0;
+      left: 0;
+    }
+
+    #copyButton {
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+
+  .send-button {
+    transition: background-color .5s ease;
+    transition: color .5s ease;
+  }
+
+  .disabled {
+    background-color: #658582;
+    pointer-events: none;
+    color: #B8C1C5;
+    transition: background-color .5s ease;
+    transition: color .5s ease;
+  }
+
   // @keyframes animation-modal {
   //   from {
   //     margin-top: 0;

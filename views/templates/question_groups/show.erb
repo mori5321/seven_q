@@ -20,7 +20,14 @@
   </div>
 
   <div class="hidden bg-base" id="modal">
-    <span id="closeButton">×</span>
+    <h5 class="txt-black">URL</h5>
+    <div id="url" class="txt-black">
+    </div>
+    <div class="send-button-group">
+      <button class="send-button bg-sub txt-white disabled" id="copyButton">
+        Copy
+      </button>
+    </div>
   </div>
   <div class="hidden" id="modal-overlay"></div>
 
@@ -37,18 +44,32 @@
 <script src="/javascripts/question_room_url_generator.js"></script>
 
 <script>
+  let copyButton = document.getElementById('copyButton');
+  copyButton.addEventListener('click', function() {
+    let urlObj = document.getElementById('url');
+    let range = document.createRange();
+    range.selectNodeContents(urlObj);
+    let selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("copy");
+  })
+</script>
+
+<script>
   let modal = document.querySelector('#modal');
   let overlay = document.querySelector('#modal-overlay');
   let buttons = {
     openButton: document.querySelector('#openButton'),
-    closeButton: document.querySelector('#closeButton')
+    // closeButton: document.querySelector('#closeButton')
   }
   let modal_obj = new Modal(modal, overlay, buttons);
   modal_obj.setEventListeners();
 
 
   let questionGroupId = document.querySelector('.question-group-title').dataset.questionGroupId
-  let questionRoom = new QuestionRoomUrlGenerator(modal, questionGroupId, buttons.openButton);
+  let url = document.querySelector('#url')
+  let questionRoom = new QuestionRoomUrlGenerator(url, questionGroupId, buttons.openButton);
   console.log(questionRoom)
   questionRoom.setEventListeners();
 

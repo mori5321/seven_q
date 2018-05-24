@@ -3,11 +3,9 @@ class Modal {
     this.modal = modal;
     this.overlay = overlay;
     this.openButton = buttons.openButton;
-    this.closeButton = buttons.closeButton;
   }
 
   setEventListeners() {
-    this.closeButton.addEventListener('click', this.close.bind(this))
     this.overlay.addEventListener('click', this.close.bind(this))
     this.openButton.addEventListener('click', this.open.bind(this))
   }
