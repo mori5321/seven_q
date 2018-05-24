@@ -48,6 +48,49 @@
     width: 150px;
     font-size: 1.1rem;
     border: none;
+    cursor: hover;
   }
+
+  .hidden {
+    display: none;
+  }
+
+  .button-close {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  #modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+  }
+
+  #modal {
+    width: 90%;
+    height: 200px;
+    overflow-y: scroll;
+    position: relative;
+    margin: 0 auto ;
+    z-index: 9999;
+  }
+  // @keyframes animation-modal {
+  //   from {
+  //     margin-top: 0;
+  //   }
+  //   to {
+  //     margin-top: 5px;
+  //   }
+  // }
+
 }
 

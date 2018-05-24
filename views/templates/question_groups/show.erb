@@ -7,18 +7,22 @@
     <h1>7♧</h1>
   </div>
 
-
-  <div class='question-group-title'>
+  <div class='question-group-title' data-question-group-id="<%= @question_group.id %>">
     <h6>
       <%= @question_group.title %>
     </h6>
   </div>
 
   <div class="send-button-group">
-    <button class="send-button bg-accent txt-white">
+    <button id="openButton" class="send-button bg-accent txt-white">
       7♧を送る
     </button>
   </div>
+
+  <div class="hidden bg-base" id="modal">
+    <span id="closeButton">×</span>
+  </div>
+  <div class="hidden" id="modal-overlay"></div>
 
   <div class='questions'>
     <% @question_group.questions.each_with_index do |q, index| %>
@@ -27,5 +31,25 @@
       </div>
     <% end %>
   </div>
-
 </div>
+
+<script src="/javascripts/modal.js"></script>
+<script src="/javascripts/question_room_url_generator.js"></script>
+
+<script>
+  let modal = document.querySelector('#modal');
+  let overlay = document.querySelector('#modal-overlay');
+  let buttons = {
+    openButton: document.querySelector('#openButton'),
+    closeButton: document.querySelector('#closeButton')
+  }
+  let modal_obj = new Modal(modal, overlay, buttons);
+  modal_obj.setEventListeners();
+
+
+  let questionGroupId = document.querySelector('.question-group-title').dataset.questionGroupId
+  let questionRoom = new QuestionRoomUrlGenerator(modal, questionGroupId, buttons.openButton);
+  console.log(questionRoom)
+  questionRoom.setEventListeners();
+
+</script>

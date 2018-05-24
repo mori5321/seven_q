@@ -1,0 +1,33 @@
+<head>
+  <link rel='stylesheet' href='/css/questions.css'>
+</head>
+
+<div id='question-groups' class='bg-main'>
+  <div class='title'>
+    <h1>7♧</h1>
+  </div>
+
+  <div class='question-group-title'">
+    <h6>
+      <%= @question_group.title %>
+    </h6>
+  </div>
+
+  <div class="send-button-group">
+    <button id="#" class="send-button bg-accent txt-white">
+      答える
+    </button>
+
+    <button id="#" class="send-button bg-sub txt-white">
+      見る
+    </button>
+  </div>
+
+  <div class='questions'>
+    <% @question_group.questions.each_with_index do |q, index| %>
+      <div class='question'>
+        Q<%= index + 1 %>. <%= q.text %>
+      </div>
+    <% end %>
+  </div>
+</div>
